@@ -2,7 +2,7 @@
 <html lang="en" class="h-100">
 
 <head>
-    <title>App Name: A Coding Project by Eric Zhang</title>
+    <title>Loan Cat: A Coding Project by Eric Zhang</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -19,7 +19,7 @@
     <!-- ==== Nav Section ==== -->
     <nav class="navbar navbar-expand-md navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#"><img src="img/android-chrome-512x512.png" class="d-inline-bloc align-tect-top pe-1" width="40" height="32">App Name</a>
+            <a class="navbar-brand" href="#"><img src="img/android-chrome-512x512.png" class="d-inline-bloc align-tect-top pe-1" width="40" height="32">Loan Cat</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -47,7 +47,33 @@
     </nav>
     <!-- ==== Main Section ==== -->
     <main class="flex-shrink-0">
-    <div class="container">
+    <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-lg-2">
+            <div class="col-lg-4">
+                <h2>Loan Calculator</h2>
+                <form class="mt-4">
+                    <a color="gray">Loan Amount</a>
+                     <input id="LoanAmount" type="number" class="form-control" placeholder="LoanAmount" 
+                        value=20000 aria-label="LoanAmount">
+                    <a color="gray">Term (Month)</a>
+                     <input id="Terms" type="number" class="form-control" placeholder="Terms" 
+                        value=60 aria-label="Terms">
+                    <a color="gray">Interest Rate</a>
+                    <input id="InterestRate" type="number" class="form-control" placeholder="InterestRate" 
+                        value=5 aria-label="InterestRate">
+
+                    <button id="btnSubmit" type="button" class="btn btn-primary btn-md mt-5">Calculate</button>
+                </form>
+
+            </div>
+            <div class="col-lg-8">
+
+            </div>
+        </div>
+
+        <div class="row">
+
+        </div>
 
     </div>
     </main>
