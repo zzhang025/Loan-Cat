@@ -50,21 +50,21 @@
     <div class="container mt-4">
         <h2>Loan Calculator</h2>
         <div class="row row-cols-1 row-cols-lg-2 mt-4">
-            <div class="col-lg-4 bg-light">
+            <div class="col-lg-5 bg-light">
                 <form class="">
-                    <a color="gray">Loan Amount</a>
+                    <a color="gray">Loan Amount($)</a>
                      <input id="LoanAmount" type="number" class="form-control" placeholder="LoanAmount" 
-                        value=20000 aria-label="LoanAmount">
+                        value=25000 aria-label="LoanAmount">
                     <a color="gray">Terms (Month)</a>
                      <input id="Terms" type="number" class="form-control" placeholder="Terms" 
                         value=60 aria-label="Terms">
-                    <a color="gray">Interest Rate</a>
+                    <a color="gray">Interest Rate(%)</a>
                     <input id="InterestRate" type="number" class="form-control" placeholder="InterestRate" 
                         value=5 aria-label="InterestRate">
                     <button id="btnSubmit" type="button" class="btn btn-primary btn-md mt-3">Calculate</button>
                 </form>
             </div>
-            <div class="col-lg-8 gx-5">
+            <div class="col-lg-7 gx-5">
                 <h3 class="text-center fst-italic text-secondary">Your Monthly Payments</h3>
                 <p class="h1 mb-4 text-center fst-italic text-secondary" id="msg">
                     <!-- Insert a Message Here -->
@@ -130,5 +130,6 @@
         integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
     </script>
     <script src="js/site.js"></script>
+    <script>document.getElementById("btnSubmit").addEventListener("click",getValues)</script>
 </body>
 </html>
