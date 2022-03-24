@@ -10,7 +10,7 @@ function getValues(){
     result = loanCalculator(amount,terms,interest);
 
     // Generate Detailed Monthly Payment
-    display(result);
+    displayData(result);
 }
 
 function loanCalculator(amount,terms,interest){
@@ -20,10 +20,13 @@ function loanCalculator(amount,terms,interest){
         interestpaid:[],
         principal:[],
         totalinterest=0,
-        balance:[]
+        balance:[],
+        monthly=0
     };
     let monthly = (amount * (interest/1200))/(1-1/((1+interest/1200)**(terms)));
     monthly = monthly.toFixed(2);
+
+    result.monthly = monthly;
     let balance = amount;
     // For loop
     for (let i = 1; i <= terms; i++) {
@@ -34,8 +37,48 @@ function loanCalculator(amount,terms,interest){
     result.totalinterest +=(balance * interest/1200).toFixed(2);
     result.balance.push((balance-(monthly-balance * interest/1200)).toFixed(2));
     balance = balance-(monthly-balance * interest/1200).toFixed(2); 
-
-
     }
     return result;
+}
+
+// Display Function
+function displayData(result){
+
+    //Get the table body element from the page
+    let tablebody = document.getElementById("results");
+
+    //Get the templat row
+    let templateRow = document.getElementById("fbTemplate");
+
+    //Clear table first
+    tablebody.interHTML="";
+    for (let index = 0; index < result.month.length; index ++) {
+
+        let tableRow = document.importNode(templateRow.content,true);
+        
+        //Grab the td put into array
+        let rowCols = tableRow.querySelectorAll("td");
+
+        rowCols[0].classList.add(result[index]);
+        rowCols[0].textContent = result.month[index]; 
+
+        rowCols[1].classList.add(result[index]);
+        rowCols[1].textContent = result.payment[index];
+
+        rowCols[2].classList.add(result[index]);
+        rowCols[2].textContent = result.principal[index];
+
+        rowCols[3].classList.add(result[index]);
+        rowCols[3].textContent = result.interestpaid[index];
+
+        rowCols[4].classList.add(result[index]);
+        rowCols[4].textContent = result.totalinterest;
+
+        rowCols[5].classList.add(result[index]);
+        rowCols[5].textContent = result.balance[index];
+
+        
+        tablebody.appendChild(tableRow);
+    }
+
 }
