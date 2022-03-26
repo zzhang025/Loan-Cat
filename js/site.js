@@ -61,7 +61,7 @@ function displayData(result){
     //Display Aggregated Parameters
     document.getElementById("montly").innerHTML=result.monthly;
     document.getElementById("total_principal").innerHTML=result.amount;
-    document.getElementById("total_interest").innerHTML=result.currentinterest;
+    document.getElementById("total_interest").innerHTML=result.currentinterest.toFixed(2);
     document.getElementById("total_cost").innerHTML=(result.monthly*result.terms).toFixed(2);
 
 
