@@ -16,17 +16,22 @@ function getValues(){
 function loanCalculator(amount,terms,interest){
     let result = {
         month:[],
+        amount:0,
         payment:[],
         interestpaid:[],
         principal:[],
-        totalinterest=0,
         balance:[],
-        monthly=0
+        currentinterest:0,
+        totalinterest:[],
+        monthly:0,
+        terms:0,
     };
     let monthly = (amount * (interest/1200))/(1-1/((1+interest/1200)**(terms)));
     monthly = monthly.toFixed(2);
 
+    result.amount = amount;
     result.monthly = monthly;
+    result.terms = terms;
     let balance = amount;
     // For loop
     for (let i = 1; i <= terms; i++) {
@@ -34,7 +39,8 @@ function loanCalculator(amount,terms,interest){
     result.payment.push(monthly);
     result.interestpaid.push((balance * interest/1200).toFixed(2));
     result.principal.push((monthly-balance * interest/1200).toFixed(2));
-    result.totalinterest +=(balance * interest/1200).toFixed(2);
+    result.currentinterest += Number((balance * interest/1200).toFixed(2));
+    result.totalinterest.push(result.currentinterest.toFixed(2));
     result.balance.push((balance-(monthly-balance * interest/1200)).toFixed(2));
     balance = balance-(monthly-balance * interest/1200).toFixed(2); 
     }
@@ -44,11 +50,20 @@ function loanCalculator(amount,terms,interest){
 // Display Function
 function displayData(result){
 
+    document.getElementById("result").classList.remove("invisible")
+
     //Get the table body element from the page
-    let tablebody = document.getElementById("results");
+    let tablebody = document.getElementById("detail");
 
     //Get the templat row
     let templateRow = document.getElementById("fbTemplate");
+
+    //Display Aggregated Parameters
+    document.getElementById("montly").innerHTML=result.monthly;
+    document.getElementById("total_principal").innerHTML=result.amount;
+    document.getElementById("total_interest").innerHTML=result.currentinterest;
+    document.getElementById("total_cost").innerHTML=(result.monthly*result.terms).toFixed(2);
+
 
     //Clear table first
     tablebody.interHTML="";
@@ -72,7 +87,7 @@ function displayData(result){
         rowCols[3].textContent = result.interestpaid[index];
 
         rowCols[4].classList.add(result[index]);
-        rowCols[4].textContent = result.totalinterest;
+        rowCols[4].textContent += result.totalinterest[index];
 
         rowCols[5].classList.add(result[index]);
         rowCols[5].textContent = result.balance[index];
